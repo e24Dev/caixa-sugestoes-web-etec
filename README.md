@@ -28,10 +28,10 @@ Vamos utilizar uma versão já compilada da API para este tutorial, baixe-a [aqu
 
 Para que todos possam focar na integração da API, não será necessário executar o projeto que voce estava desenvolvendo, iremos utilizar uma aplicação já compilada da API, basta apenas executar-la.
 
-> Para executar a API no seu próprio computador execute o comando abaixo
+> Para executar a API no seu próprio computador execute o comando abaixo, lembre-se que o console deve estar no diretório ao qual o .jar esteja localizado.
 
 ```shell
-java -jar build/libs/caixa-sugestoes-web-etec-0.1.0.jar --server.address=0.0.0.0
+java -jar caixa-sugestoes-web-etec-0.1.0.jar --server.address=0.0.0.0
 ```
 
 > Para testar na API de outro colega, substitua o IP acima pelo IP do computador de seu colega de classe. Faça este teste apenas em laboratório. Esta
