@@ -20,48 +20,18 @@ Pré-requisitos para todo o percurso:
 
 As partes são cumulativas: conclua a Parte 1 antes da Parte 2 e a Parte 2 antes da Parte 3. Cada documento traz blocos de código completos, um checkpoint e uma seção de erros comuns. O código deste repositório é a referência final; os documentos usam versões reduzidas para facilitar a reprodução em sala. A Parte 2 é a mais detalhada porque concentra a sintaxe de Thymeleaf.
 
-## Integração com a API
+## API 
 
-O frontend chama a API no servidor Java via `RestClient`, sem acesso direto ao banco. O cliente já inclui o prefixo `/api`, então **não** acrescente `/api` em `API_BASE_URL`.
+Vamos utilizar uma versão já compilada da API para este tutorial, baixe-a [aqui](caixa-sugestoes-web-etec-0.1.0.jar).
 
-- `app.api.base-url`: configurado por `API_BASE_URL`; padrão `http://localhost:8000`.
-- `server.port`: configurado por `WEB_PORT`; padrão `8081`.
+### Executar a API
 
-Se a API estiver em outra porta, por exemplo `8081`, inicie com `API_BASE_URL=http://localhost:8081`. Observe que este web app também usa `8081` por padrão; use `WEB_PORT` para evitar conflito.
+Para que todos possam focar na integração da API, não será necessário executar o projeto que voce estava desenvolvendo, iremos utilizar uma aplicação já compilada da API, basta apenas executar-la.
 
-## Executar
+> Para executar a API no seu próprio computador execute o comando abaixo
 
-Use JDK 17 e o wrapper Gradle incluído:
-
-```bash
-# API em http://localhost:8000
-./gradlew bootRun
-
-# API em outra porta / web em outra porta
-API_BASE_URL=http://localhost:8081 WEB_PORT=8082 ./gradlew bootRun
+```shell
+java -jar build/libs/caixa-sugestoes-web-etec-0.1.0.jar --server.address=0.0.0.0
 ```
 
-## Build/test
-
-```bash
-./gradlew clean build
-./gradlew test
-```
-
-## Estrutura
-
-- `src/main/java/br/com/e24dev/caixaweb/controller/`: rotas web.
-- `src/main/java/br/com/e24dev/caixaweb/client/`: `CaixaApiClient` e `ApiException`.
-- `src/main/java/br/com/e24dev/caixaweb/model/`: modelos JSON/formulários.
-- `src/main/java/br/com/e24dev/caixaweb/service/`: sessão administrativa.
-- `src/main/java/br/com/e24dev/caixaweb/config/`: `RestClient`, segurança e filtros.
-- `src/main/resources/templates/`: templates Thymeleaf.
-- `src/main/resources/application.yaml`: configuração.
-
-## Endpoints consumidos
-
-Contrato HTTP da API: `/api/courses`, `/api/categories`, `/api/suggestions`, `/api/suggestions/{id}`, `POST /api/suggestions`, `POST /api/auth/login`, `PUT /api/suggestions/{id}`, `DELETE /api/suggestions/{id}`. Não invente campos, IDs ou endpoints; a collection Insomnia entregue com a API é a referência.
-
-## Segurança
-
-JWTs ficam exclusivamente em sessão HTTP server-side; CSRF protegido nos formulários POST. Não versione credenciais/tokens.
+> Para testar na API de outro colega, substitua o IP acima pelo IP do computador de seu colega de classe. Faça este teste apenas em laboratório. Esta
