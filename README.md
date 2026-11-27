@@ -26,12 +26,20 @@ Vamos utilizar uma versão já compilada da API para este tutorial, baixe-a [aqu
 
 ### Executar a API
 
+> Para minimizarmos os problemas para com as migrations do FlyWay com relação ao .jar que vocês baixaram, excluam a tabela `flyway_schema_history`, ela está dentro do schema `suggestions`, para facilitar, acesse o PhpMyAdmin, acesse o schema `suggestions` e o exclua.
+
 Para que todos possam focar na integração da API, não será necessário executar o projeto que voce estava desenvolvendo, iremos utilizar uma aplicação já compilada da API, basta apenas executar-la.
 
 > Para executar a API no seu próprio computador execute o comando abaixo, lembre-se que o console deve estar no diretório ao qual o .jar esteja localizado.
 
+#### Caso o MySQL *NÃO* tenha senha configurada
 ```shell
-java -jar caixa-sugestoes-web-etec-0.1.0.jar --server.address=0.0.0.0
+java -jar caixa-sugestoes-api.jar --spring.datasource.password=
+```
+
+#### Caso o MySQL tenha senha configurada
+```shell
+java -jar caixa-sugestoes-api.jar --spring.datasource.password=sua-senha-aqui
 ```
 
 > Para testar na API de outro colega, substitua o IP acima pelo IP do computador de seu colega de classe. Faça este teste apenas em laboratório. Esta
